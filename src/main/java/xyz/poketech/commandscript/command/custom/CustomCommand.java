@@ -11,18 +11,18 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import xyz.poketech.commandscript.CommandScript;
 import xyz.poketech.commandscript.sandbox.CommandSandboxFactory;
 import xyz.poketech.commandscript.sandbox.wrapper.player.PlayerWrapper;
 import xyz.poketech.commandscript.sandbox.wrapper.WorldWrapper;
-import xyz.poketech.commandscript.util.FileUtil;
 
 import javax.script.ScriptException;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A custom command that will execute Javascript when ran
@@ -78,7 +78,7 @@ public class CustomCommand extends CommandBase implements ICustomCommand {
             sandbox.inject("player", new PlayerWrapper((EntityPlayerSP) sender));
 
             try {
-                sandbox.eval(FileUtil.readFile(CommandRegistry.COMMANDS_DIR + File.separator + path, Charset.defaultCharset()));
+                sandbox.eval(FileUtils.readFileToString(new File(CommandRegistry.COMMANDS_DIR + File.separator + path), StandardCharsets.UTF_8));
             } catch (ScriptException e) {
                 CommandScript.LOGGER.error("Error running script %s: ", path, e);
                 writer.append(
