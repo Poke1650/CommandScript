@@ -38,7 +38,7 @@ public class CommandSandboxFactory {
     public static void init() {
         wrappers.clear();
         Stopwatch stopwatch = Stopwatch.createStarted();
-        CommandScript.logger.info("Loading wrappers");
+        CommandScript.LOGGER.info("Loading wrappers");
         try {
 
             //Gather all classes that are in the wrapper package recursively
@@ -47,13 +47,13 @@ public class CommandSandboxFactory {
 
             classes.forEach(classInfo -> {
                 wrappers.add(classInfo.load());
-                CommandScript.logger.info("Loaded wrapper " + classInfo.getSimpleName());
+                CommandScript.LOGGER.info("Loaded wrapper " + classInfo.getSimpleName());
             });
 
         } catch (Exception e) {
-            CommandScript.logger.error("Error loading wrappers", e);
+            CommandScript.LOGGER.error("Error loading wrappers", e);
         }
-        CommandScript.logger.info("Loaded {} wrapper(s) in {}", wrappers.size(), stopwatch.stop());
+        CommandScript.LOGGER.info("Loaded {} wrapper(s) in {}", wrappers.size(), stopwatch.stop());
     }
 
     /**

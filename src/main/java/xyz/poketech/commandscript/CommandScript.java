@@ -4,6 +4,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import xyz.poketech.commandscript.command.core.CSCommands;
 import xyz.poketech.commandscript.command.custom.CommandRegistry;
@@ -19,16 +20,14 @@ public class CommandScript {
     @Mod.Instance
     public static CommandScript instance;
 
-    public static Logger logger;
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
-
         //Either first launch of the user deleted the directory
         if (!CommandRegistry.COMMANDS_DIR.exists()) {
             CommandRegistry.COMMANDS_DIR.mkdirs();
-            logger.info("Created missing directory for commands at {}", CommandRegistry.COMMANDS_DIR.getAbsoluteFile());
+            LOGGER.info("Created missing directory for commands at {}", CommandRegistry.COMMANDS_DIR.getAbsoluteFile());
         }
 
     }

@@ -26,13 +26,13 @@ public class CommandRegistry {
     public static void init() {
 
         Stopwatch stopwatch = Stopwatch.createStarted();
-        CommandScript.logger.info("Loading indexed commands at {}", INDEX.getAbsoluteFile());
+        CommandScript.LOGGER.info("Loading indexed commands at {}", INDEX.getAbsoluteFile());
 
         List<CustomCommand> commands = JsonUtil.fromJson(new TypeToken<List<CustomCommand>>(){}, INDEX);
 
         commands.forEach(CommandRegistry::add);
 
-        CommandScript.logger.info("Loaded {} command(s) from index in {}", registry.size(), stopwatch.stop());
+        CommandScript.LOGGER.info("Loaded {} command(s) from index in {}", registry.size(), stopwatch.stop());
     }
 
     /**
@@ -68,7 +68,7 @@ public class CommandRegistry {
         CommandHelper.removeCommand(command);
         registry.removeIf(customCommand -> customCommand.getName().equals(command));
         writeToDisk();
-        CommandScript.logger.info("Removed command {}", command);
+        CommandScript.LOGGER.info("Removed command {}", command);
     }
 
     /**
@@ -84,7 +84,7 @@ public class CommandRegistry {
         ClientCommandHandler.instance.registerCommand(command);
         registry.add(command);
         writeToDisk();
-        CommandScript.logger.info("Registered command {}", command.getName());
+        CommandScript.LOGGER.info("Registered command {}", command.getName());
     }
 
     /**

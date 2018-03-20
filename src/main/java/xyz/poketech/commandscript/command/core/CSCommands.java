@@ -25,7 +25,7 @@ public class CSCommands {
                 try {
                     ICommand cmd = (ICommand) field.get(null);
                     ClientCommandHandler.instance.registerCommand(cmd);
-                    CommandScript.logger.info("Registered command {}", cmd.getName());
+                    CommandScript.LOGGER.info("Registered command {}", cmd.getName());
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }

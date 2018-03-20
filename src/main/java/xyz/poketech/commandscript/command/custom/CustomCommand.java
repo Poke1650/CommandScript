@@ -80,7 +80,7 @@ public class CustomCommand extends CommandBase implements ICustomCommand {
             try {
                 sandbox.eval(FileUtil.readFile(CommandRegistry.COMMANDS_DIR + File.separator + path, Charset.defaultCharset()));
             } catch (ScriptException e) {
-                CommandScript.logger.error("Error running script %s: ", path, e);
+                CommandScript.LOGGER.error("Error running script %s: ", path, e);
                 writer.append(
                         new TextComponentTranslation("command.commandscript.error.run", getName() , getPath(), e.getMessage())
                                 .setStyle(new Style().setColor(TextFormatting.RED)).getFormattedText()
