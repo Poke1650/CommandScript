@@ -1,0 +1,12 @@
+command.commandscript.error.add=Something went wrong adding command %s, see the logs for more information
+
+
+command.commandscript.add.usage=Usage: /commandscript add commandname path usage
+command.commandscript.add.success=Successfully added command %s
+command.commandscript.add.error=Error adding command: %s
+
+command.commandscript.remove.usage="Usage: /commandscript remove name
+command.commandscript.remove.success=Successfully removed command %s
+command.commandscript.remove.error=Error removing command %s: %s
+
+command.commandscript.error.run=Error running command %s with script %s: %s

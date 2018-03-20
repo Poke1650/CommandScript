@@ -1,0 +1,16 @@
+[
+{
+  "modid": "commandscript",
+  "name": "Command Script",
+  "description": "Script your commands using JavaScript",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Poke1650"],
+  "credits": "TehNut for the help with Nashorn and Blu for the motivation to actually start it",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
