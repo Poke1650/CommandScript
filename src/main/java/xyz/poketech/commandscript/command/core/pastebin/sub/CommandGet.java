@@ -7,6 +7,7 @@ import net.minecraft.server.MinecraftServer;
 import org.apache.commons.io.FilenameUtils;
 import xyz.poketech.commandscript.CommandScript;
 import xyz.poketech.commandscript.command.custom.CommandRegistry;
+import xyz.poketech.commandscript.util.FileUtil;
 import xyz.poketech.commandscript.util.LocalizationHelper;
 import xyz.poketech.commandscript.util.PasteHelper;
 
@@ -30,7 +31,10 @@ public class CommandGet extends CommandBase {
             sender.sendMessage(LocalizationHelper.getFormattedResultMessage(false, getUsage(sender)));
         } else {
             File dest = new File(CommandRegistry.COMMANDS_DIR , args[1]);
-
+            if(!FileUtil.isInCommandDirectory(dest)) {
+                sender.sendMessage(LocalizationHelper.getFormattedResultMessage(false, "command.commandscript.pastebin.get.error", "attempted to write file outside of command directory"));
+                return;
+            }
             if(dest.exists()) {
                 if(args.length < 3 || !args[2].equalsIgnoreCase("--overwrite") && !args[2].equalsIgnoreCase("-o")) {
                     sender.sendMessage(LocalizationHelper.getFormattedResultMessage(false, "command.commandscript.pastebin.get.overwrite", args[1]));

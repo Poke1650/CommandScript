@@ -15,8 +15,6 @@ public class CSCommands {
 
     public static final ICommand COMMAND_CUSTOM_COMMANDS = new CommandCustomCommands();
 
-    public static final ICommand COMMAND_PASTEBIN = new CommandPastebin();
-
     /**
      * Register every static ICommand fields in this class on the client
      */
