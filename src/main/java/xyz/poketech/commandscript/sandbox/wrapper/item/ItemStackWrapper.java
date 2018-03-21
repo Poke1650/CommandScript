@@ -2,6 +2,7 @@ package xyz.poketech.commandscript.sandbox.wrapper.item;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
+import xyz.poketech.commandscript.sandbox.wrapper.NBTWrapper;
 
 public class ItemStackWrapper {
 
@@ -45,5 +46,9 @@ public class ItemStackWrapper {
 
     public String getLocalizedName() {
         return new TextComponentTranslation(stack.getUnlocalizedName()).getUnformattedComponentText();
+    }
+
+    public NBTWrapper getTagCompound() {
+        return new NBTWrapper(stack.getTagCompound());
     }
 }

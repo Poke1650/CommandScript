@@ -20,4 +20,8 @@ public class ItemWrapper {
     public String getLocalizedName() {
         return new TextComponentTranslation(item.getUnlocalizedName()).getUnformattedComponentText();
     }
+
+    public String getRegistryName() {
+        return item.getRegistryName().toString();
+    }
 }
