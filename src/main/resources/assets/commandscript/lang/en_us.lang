@@ -14,3 +14,4 @@ command.commandscript.error.run=Error running command %s with script %s: %s
 command.commandscript.pastebin.get.usage=/commandscript pastebin get id filename
 command.commandscript.pastebin.get.success=Successfully downloaded paste %s as %s
 command.commandscript.pastebin.get.error=Failed to download paste %s
+command.commandscript.pastebin.get.overwrite=File %s already exists! Put --overwrite or -o at the end of your command if you wish to overwrite it

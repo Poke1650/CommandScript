@@ -14,10 +14,7 @@ public class PasteHelper {
 
     public static final String HASTEBIN_RAW = "https://hastebin.com/raw/";
 
-    public static void downloadPaste(String id, String filename) throws IOException {
-        FileUtils.copyURLToFile(
-                new URL(PASTEBIN_RAW + id.replaceAll("[\\\\.\\\\/\\\\/]", "_")),
-                new File(CommandRegistry.COMMANDS_DIR , filename)
-        );
+    public static void downloadPaste(String id, File destination) throws IOException {
+        FileUtils.copyURLToFile(new URL(PASTEBIN_RAW + id.replaceAll("[\\\\.\\\\/\\\\/]", "_")),destination);
     }
 }
