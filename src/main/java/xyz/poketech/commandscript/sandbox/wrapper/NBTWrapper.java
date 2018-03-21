@@ -3,6 +3,9 @@ package xyz.poketech.commandscript.sandbox.wrapper;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.nbt.NBTTagCompound;
 
+/**
+ * Wrapper around an {@link NBTTagCompound}
+ */
 public class NBTWrapper {
 
     NBTTagCompound tag;
