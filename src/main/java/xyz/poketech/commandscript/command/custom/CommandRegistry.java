@@ -50,7 +50,6 @@ public class CommandRegistry {
         for(ICustomCommand command : registry) {
             remove(command.getName());
         }
-
         //Load all commands
         init();
     }
@@ -88,11 +87,12 @@ public class CommandRegistry {
     }
 
     /**
-     * Serialize the registry
+     * Serialize the registry and writes it to the index file
      */
     private static void writeToDisk() {
         JsonUtil.toJson(registry, new TypeToken<List<ICustomCommand>>(){}, INDEX);
     }
+
 
     private static boolean commandNameRegistred(String name) {
         for (ICustomCommand command : registry) {

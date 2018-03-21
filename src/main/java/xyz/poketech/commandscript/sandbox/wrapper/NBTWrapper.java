@@ -12,8 +12,6 @@ public class NBTWrapper {
 
     public NBTWrapper(NBTTagCompound tag) {
         this.tag = tag;
-
-        tag.getKeySet();
     }
 
     public ImmutableSet<String> getKeySet() {

@@ -14,7 +14,7 @@ import xyz.poketech.commandscript.util.LocalizationHelper;
 public class CommandReload extends CommandBase {
     @Override
     public String getName() {
-        return "init";
+        return "reload";
     }
 
     @Override
