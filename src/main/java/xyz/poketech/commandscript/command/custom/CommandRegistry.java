@@ -44,14 +44,28 @@ public class CommandRegistry {
         return copy;
     }
 
+    /**
+     * Remove all commands and reload them from the index
+     */
     public static void reloadCommands() {
 
-        //Remove all commands
-        for(ICustomCommand command : new ArrayList<>(registry)) {
-            remove(command.getName());
+        //Remove all commands from minecraft registries
+        for(ICustomCommand command : registry) {
+            CommandHelper.removeCommand(command.getName());
         }
-        //Load all commands
+
+        registry.clear();
+
+        //Load all commands from index
         init();
+    }
+
+    /**
+     * Remove a command from the Minecraft command registry and from the internal registry
+     * @throws NoSuchElementException if there is no command with such name registered
+     */
+    public static void remove(ICustomCommand command) throws NoSuchElementException {
+        remove(command.getName());
     }
 
     /**
@@ -93,7 +107,18 @@ public class CommandRegistry {
         JsonUtil.toJson(registry, new TypeToken<List<ICustomCommand>>(){}, INDEX);
     }
 
+    /**
+     * @param command the command to check
+     * @return if a command with that name is already registred
+     */
+    private static boolean commandNameRegistred(ICustomCommand command) {
+        return commandNameRegistred(command.getName());
+    }
 
+    /**
+     * @param name the name of the command to check
+     * @return if a command with that name is already registred
+     */
     private static boolean commandNameRegistred(String name) {
         for (ICustomCommand command : registry) {
             if (command.getName().equals(name)) {
@@ -102,4 +127,5 @@ public class CommandRegistry {
         }
         return false;
     }
+    
 }
