@@ -10,3 +10,7 @@ command.commandscript.remove.success=Successfully removed command %s
 command.commandscript.remove.error=Error removing command %s: %s
 
 command.commandscript.error.run=Error running command %s with script %s: %s
+
+command.commandscript.pastebin.get.usage=/commandscript pastebin get id filename
+command.commandscript.pastebin.get.success=Successfully downloaded paste %s as %s
+command.commandscript.pastebin.get.error=Failed to download paste %s

@@ -3,6 +3,7 @@ package xyz.poketech.commandscript.command.core;
 import net.minecraft.command.ICommand;
 import net.minecraftforge.client.ClientCommandHandler;
 import xyz.poketech.commandscript.CommandScript;
+import xyz.poketech.commandscript.command.core.pastebin.CommandPastebin;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -13,6 +14,8 @@ import java.lang.reflect.Modifier;
 public class CSCommands {
 
     public static final ICommand COMMAND_CUSTOM_COMMANDS = new CommandCustomCommands();
+
+    public static final ICommand COMMAND_PASTEBIN = new CommandPastebin();
 
     /**
      * Register every static ICommand fields in this class on the client

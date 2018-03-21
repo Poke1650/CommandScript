@@ -3,6 +3,7 @@ package xyz.poketech.commandscript.command.core;
 import com.google.common.collect.Lists;
 import net.minecraft.command.ICommandSender;
 import net.minecraftforge.server.command.CommandTreeBase;
+import xyz.poketech.commandscript.command.core.pastebin.CommandPastebin;
 import xyz.poketech.commandscript.command.core.sub.CommandAdd;
 import xyz.poketech.commandscript.command.core.sub.CommandList;
 import xyz.poketech.commandscript.command.core.sub.CommandReload;
@@ -22,6 +23,8 @@ public class CommandCustomCommands extends CommandTreeBase {
         addSubcommand(new CommandRemove());
         addSubcommand(new CommandReload());
         addSubcommand(new CommandList());
+
+        addSubcommand(new CommandPastebin());
     }
 
     @Override
