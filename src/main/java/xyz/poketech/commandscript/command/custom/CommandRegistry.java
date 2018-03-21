@@ -47,7 +47,7 @@ public class CommandRegistry {
     public static void reloadCommands() {
 
         //Remove all commands
-        for(ICustomCommand command : registry) {
+        for(ICustomCommand command : new ArrayList<>(registry)) {
             remove(command.getName());
         }
         //Load all commands
