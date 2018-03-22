@@ -1,5 +1,6 @@
 package xyz.poketech.commandscript.command.core.pastebin.sub;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -45,9 +46,9 @@ public class CommandGet extends CommandBase {
             new Thread(() -> {
                 try {
                     PasteHelper.downloadPaste(args[0], dest);
-                    sender.sendMessage(LocalizationHelper.getFormattedResultMessage(true, "command.commandscript.pastebin.get.success", args[0], args[1]));
+                    Minecraft.getMinecraft().addScheduledTask(() -> sender.sendMessage(LocalizationHelper.getFormattedResultMessage(true, "command.commandscript.pastebin.get.success", args[0], args[1])));
                 } catch (IOException e) {
-                    sender.sendMessage(LocalizationHelper.getFormattedResultMessage(false, "command.commandscript.pastebin.get.error", args[0]));
+                    Minecraft.getMinecraft().addScheduledTask(() -> sender.sendMessage(LocalizationHelper.getFormattedResultMessage(false, "command.commandscript.pastebin.get.error", args[0])));
                     CommandScript.LOGGER.error("Error downloading paste " + args[0], e);
                 }
             }).start();
