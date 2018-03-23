@@ -30,7 +30,9 @@ public class CommandRegistry {
 
         List<CustomCommand> commands = JsonUtil.fromJson(new TypeToken<List<CustomCommand>>(){}, INDEX);
 
-        commands.forEach(CommandRegistry::add);
+        if (commands != null) {
+            commands.forEach(CommandRegistry::add);
+        }
 
         CommandScript.LOGGER.info("Loaded {} command(s) from index in {}", registry.size(), stopwatch.stop());
     }

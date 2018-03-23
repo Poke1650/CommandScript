@@ -77,6 +77,7 @@ public class CustomCommand extends CommandBase implements ICustomCommand {
             sandbox.inject("args", args);
             sandbox.inject("player", new PlayerWrapper((EntityPlayerSP) sender));
 
+
             try {
                 sandbox.eval(FileUtils.readFileToString(new File(CommandRegistry.COMMANDS_DIR + File.separator + path), StandardCharsets.UTF_8));
             } catch (ScriptException e) {
