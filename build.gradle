@@ -8,13 +8,13 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.github.johnrengelman.shadow" version "2.0.2"
-}
-
 apply plugin: 'net.minecraftforge.gradle.forge'
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
 
 version = "1.0"
 group = "xyz.poketech.commandscript"
@@ -27,23 +27,54 @@ compileJava {
 
 minecraft {
     version = "1.12.2-14.23.2.2627"
-    runDir = "run"
+    if(file('../run').exists()) {
+        runDir = "../run"
+    }
+    else
+    {
+        runDir = "run"
+    }
 
     mappings = "snapshot_20171003"
 }
 
 dependencies {
-    compile("org.javadelight:delight-nashorn-sandbox:0.1.3") {
-    }
+    embed "org.javadelight:delight-nashorn-sandbox:0.1.3"
     //compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
 
 }
 
-reobf {
-    shadowJar { mappingType = 'SEARGE' }
+compileJava {
+    options.encoding = 'UTF-8'
 }
 
-tasks.build.dependsOn reobfShadowJar
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
+}
+
+jar {
+    def allowed = "delight-nashorn-sandbox"
+    from(configurations.embed) {
+        include(allowed + '**')
+    }
+    def DEPS = ""
+    configurations.embed.each {
+        dep -> if(dep.getName().startsWith(allowed)) {
+            DEPS += ' ' + dep.getName()
+        }
+    }
+    manifest.mainAttributes(
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${project.version}",
+            "Built-On": "${project.minecraft.version}",
+            "Maven-Artifact":"${project.group}:${project.archivesBaseName}:${project.version}",
+            "ContainedDeps": DEPS
+    )
+}
 
 processResources {
     // this will ensure that this task is redone when the versions change.
