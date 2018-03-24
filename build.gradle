@@ -39,9 +39,7 @@ minecraft {
 }
 
 dependencies {
-    embed "org.javadelight:delight-nashorn-sandbox:0.1.3"
-    //compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
-
+    embed "org.javadelight:delight-nashorn-sandbox:0.1.13"
 }
 
 compileJava {

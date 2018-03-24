@@ -43,7 +43,7 @@ public class CommandSandboxFactory {
 
             //Gather all classes that are in the wrapper package recursively
             ClassPath classPath = ClassPath.from(Thread.currentThread().getContextClassLoader());
-            Collection<ClassPath.ClassInfo> classes = classPath.getTopLevelClassesRecursive("xyz.poketech.commandscript.engine.wrapper");
+            Collection<ClassPath.ClassInfo> classes = classPath.getTopLevelClassesRecursive("xyz.poketech.commandscript.sandbox.wrapper");
 
             classes.forEach(classInfo -> {
                 wrappers.add(classInfo.load());
